@@ -1,0 +1,45 @@
+plugins {
+	//id 'org.springframework.boot' version '2.5.2'
+	id 'org.springframework.boot' version '2.4.2'
+	//id 'org.springframework.boot' version '2.3.2.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.example.helloworld.api.client'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	//set('springCloudVersion', "2020.0.3")
+	//set('springCloudVersion', "Hoxton.RELEASE")
+	set('springCloudVersion', "2020.0.1")
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+	implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-hystrix', version: '2.2.7.RELEASE'
+	implementation group: 'io.github.openfeign', name: 'feign-hystrix', version: '11.0'
+    implementation group: 'io.github.openfeign', name: 'feign-httpclient', version: '11.0'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation "com.github.tomakehurst:wiremock:2.26.3"
+	implementation group: 'io.github.openfeign', name: 'feign-ribbon', version: '11.0'
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
+
+test {
+	useJUnitPlatform()
+}

@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: simple-helloworld-api-client
+    
+feign:
+  name:
+    helloWorldApi: simple-helloworld-api
+#  hystrix:
+#    enabled: true
+#  circuitbreaker:
+#    enabled: true
+  client:
+    config:
+      default:
+        connectTimeout: 15000
+        readTimeout: 15000
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+
+helloWorldApi:
+  baseUrl: api/v1/
+    
+server:
+  port: 8081
+
+eureka:
+  client:
+    enabled: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
+
+logger:
+  level:
+    feign: DEBUG
