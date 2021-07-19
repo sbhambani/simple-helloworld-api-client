@@ -31,7 +31,7 @@ dependencies {
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation "com.github.tomakehurst:wiremock:2.26.3"
-	implementation group: 'io.github.openfeign', name: 'feign-ribbon', version: '11.0'
+	//testImplementation group: 'io.github.openfeign', name: 'feign-ribbon', version: '11.0'
 }
 
 dependencyManagement {
